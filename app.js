@@ -82,7 +82,6 @@ function startTimer (){
         resultDisplay.textContent = 'You Lost! Refresh to play again!'
         clearInterval(clock)
         for(let i =0; i < cardArray.length; i++){
-            console.log('loop')
             cards[i].removeEventListener('click',flipCard)
         }
     }
@@ -95,7 +94,6 @@ function checkMatch(){
     const cards = document.querySelectorAll('#grid img')
     const optionOneId = cardsChosenIds[0]
     const optionTwoId = cardsChosenIds[1]
-    console.log(cards)
 
     if (optionOneId == optionTwoId){
         alert('Click a different card!')
@@ -132,14 +130,11 @@ function flipCard (){
     let cardId = this.getAttribute('data-id')
     cardsChosen.push(cardArray[cardId].name)
     cardsChosenIds.push(cardId)
-    console.log(cardsChosen)
-    console.log(cardsChosenIds)
     this.setAttribute('src', cardArray[cardId].img)
     if (cardsChosen.length > 2){
         alert('Woah! Slow down!')
         for(let i =0; i < cardsChosen.length; i++){
             cards[cardsChosenIds[i]].setAttribute('src', 'images/puck.png')
-            console.log('fixed')
         }
         cardsChosen = []
         cardsChosenIds = []
